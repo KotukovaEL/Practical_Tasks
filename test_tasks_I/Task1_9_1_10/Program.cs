@@ -12,7 +12,7 @@ namespace Task1_9_1_10
         {
             Console.WriteLine("Введите значение x");
             double x = ReadDouble(Console.ReadLine());
-            double y = 1 + (x / 3) + Math.Abs(x) + ((Math.Pow(x,3) + 4) / 2);
+            double y = 1 + (x / 3) + Math.Abs(x) + ((Math.Pow(x, 3) + 4) / 2);
             Console.WriteLine("Ответ: " + y);
             Console.ReadLine();
         }
