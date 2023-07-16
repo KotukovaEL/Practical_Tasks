@@ -17,32 +17,26 @@ namespace Task1_9_3_20
             Console.WriteLine("Введите третью сторону треугольника: ");
             double c = ReadDouble(Console.ReadLine());
 
-            if (a + b > c || a + c > b || c + b > a)
+            if (a + b <= c || a + c <= b || c + b <= a)
             {
-                if (a == b && a == c && b == c)
-                {
-                    Console.WriteLine("Треугольник равносторонний");
-                }
-
-                else
-                {
-                    Console.WriteLine("Треугольник неравносторонний ");
-                }
+                throw new Exception("Такого треугольника не существует");
             }
 
+            if (a == b && a == c && b == c)
+            {
+                Console.WriteLine("Треугольник равносторонний");
+            }
             else
             {
-                Console.WriteLine("Такого треугольника не существует");
+                Console.WriteLine("Треугольник неравносторонний ");
             }
-
-            Console.ReadLine();
         }
 
         private static double ReadDouble(string str)
         {
             if (!double.TryParse(str, out double value))
             {
-                throw new Exception($"Некорректное целое значение '{value}'.");
+                throw new Exception($"Некорректное целое значение '{str}'.");
             }
 
             return value;

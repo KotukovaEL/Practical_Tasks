@@ -20,14 +20,13 @@ namespace Task1_9_3_2
             {
                 Console.WriteLine("Число нечетное");
             }
-            Console.ReadLine();
         }
 
         static double ReadDouble(string str)
         {
             if (!double.TryParse(str, out double value))
             {
-                throw new Exception($"Некорректное целое значение '{value}'.");
+                throw new Exception($"Некорректное целое значение '{str}'.");
             }
 
             return value;

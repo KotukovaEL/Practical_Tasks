@@ -14,24 +14,22 @@ namespace Task1_9_3_1
             double a = ReadDouble(Console.ReadLine());
             Console.WriteLine("Введите второе вещественное число: ");
             double b = ReadDouble(Console.ReadLine());
+
             if (a > b)
             {
                 Console.WriteLine("Максимальное значение " + a);
             }
-
             else 
             {
                 Console.WriteLine("Максимальное значение " + b);
             }
-
-            Console.ReadLine();
         }
 
         private static double ReadDouble(string str)
         {
             if (!double.TryParse(str, out double value))
             {
-                throw new Exception($"Некорректное целое значение '{value}'.");
+                throw new Exception($"Некорректное целое значение '{str}'.");
             }
 
             return value;

@@ -12,29 +12,32 @@ namespace Task1_9_3_10
         {
             Console.WriteLine("Введите двузначное число: ");
             int a = ReadInt(Console.ReadLine());
-            if (Math.Abs(a) >= 10 && Math.Abs(a) < 100 || -Math.Abs(a) >= -10 && -Math.Abs(a) > 100)
+            int abs = Math.Abs(a);
+
+            if (abs < 10 || abs >= 100)
             {
-                int b = a % 10;
-                int c = a / 10;
-                int d = b + c;
-                if (d % 2 == 0)
-                {
-                    Console.WriteLine("Сумма цифр двухзначного числа четная");
-                }
-                
-                else 
-                {
-                    Console.WriteLine("Сумма цифр двухзначного числа нечетная");
-                }
+                throw new Exception($"Число не двузначное '{a}'");
             }
-            Console.ReadLine();
+
+            int b = a % 10;
+            int c = a / 10;
+            int d = b + c;
+
+            if (d % 2 == 0)
+            {
+                Console.WriteLine("Сумма цифр двухзначного числа четная");
+            }
+            else
+            {
+                Console.WriteLine("Сумма цифр двухзначного числа нечетная");
+            }
         }
 
         private static int ReadInt(string str)
         {
             if (!int.TryParse(str, out int value))
             {
-                throw new Exception($"Некорректное целое значение '{value}'.");
+                throw new Exception($"Некорректное целое значение '{str}'.");
             }
 
             return value;
