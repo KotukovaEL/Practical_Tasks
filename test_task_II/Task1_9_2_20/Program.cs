@@ -18,14 +18,13 @@ namespace Task1_9_2_20
             double n = ReadDouble(Console.ReadLine());
             double sum = b * ((Math.Pow(q, n) - 1) / (q - 1));
             Console.WriteLine("Сумма прогрессии: " + sum);
-            Console.ReadLine();
         }
 
         static double ReadDouble(string str)
         {
             if (!double.TryParse(str, out double value))
             {
-                throw new Exception($"Некорректное целое значение '{value}'.");
+                throw new Exception($"Некорректное целое значение '{str}'.");
             }
 
             return value;

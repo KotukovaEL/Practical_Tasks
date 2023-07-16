@@ -14,14 +14,13 @@ namespace Task1_9_2_10
             double v = ReadDouble(Console.ReadLine());
             double a =  Math.Pow(v, 1.0/3.0);
             Console.WriteLine("Pебро куба: " + a);
-            Console.ReadLine();
         }
 
         static double ReadDouble(string str)
         {
             if (!double.TryParse(str, out double value))
             {
-                throw new Exception($"Некорректное целое значение '{value}'.");
+                throw new Exception($"Некорректное целое значение '{str}'.");
             }
 
             return value;

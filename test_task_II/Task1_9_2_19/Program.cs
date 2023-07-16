@@ -18,14 +18,13 @@ namespace Task1_9_2_19
             double n = ReadDouble(Console.ReadLine());
             double sum = (2 * a + d * (n - 1)) / 2 * n;
             Console.WriteLine("Сумма арифметической прогрессии: " + sum);
-            Console.ReadLine();
         }
 
         static double ReadDouble(string str)
         {
             if (!double.TryParse(str, out double value))
             {
-                throw new Exception($"Некорректное целое значение '{value}'.");
+                throw new Exception($"Некорректное целое значение '{str}'.");
             }
 
             return value;

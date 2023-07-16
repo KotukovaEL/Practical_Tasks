@@ -14,14 +14,13 @@ namespace Task1_9_2_1
             double s = ReadDouble(Console.ReadLine());
             double p = 4 * Math.Sqrt(s);
             Console.WriteLine("Периметр квадрата: " + p);
-            Console.ReadLine();
         }
 
         static double ReadDouble(string str)
         {
             if (!double.TryParse(str, out double value))
             {
-                throw new Exception($"Некорректное целое значение '{value}'.");
+                throw new Exception($"Некорректное целое значение '{str}'.");
             }
 
             return value;
