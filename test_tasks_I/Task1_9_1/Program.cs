@@ -13,16 +13,15 @@ namespace Task1_9_1_1
         {
             Console.WriteLine("Введите значение x");
             double x = ReadDouble(Console.ReadLine());
-            double y = 10 * (Math.Sin(x)) + Math.Abs(Math.Pow(x, 4) - Math.Pow(x, 5));
+            double y = 10 * Math.Sin(x) + Math.Abs(x * x * x * x - x * x * x * x * x);
             Console.WriteLine("Ответ: " + y);
-            Console.ReadLine();
         }
 
         static double ReadDouble(string str)
         {
             if (!double.TryParse(str, out double value))
             {
-                throw new Exception($"Некорректное целое значение '{value}'.");
+                throw new Exception($"Некорректное целое значение '{str}'.");
             }
 
             return value;

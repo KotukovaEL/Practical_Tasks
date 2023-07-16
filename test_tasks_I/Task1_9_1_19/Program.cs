@@ -16,16 +16,15 @@ namespace Task1_9_1_19
             double b = ReadDouble(Console.ReadLine());
             Console.WriteLine("Введите значение c");
             double c = ReadDouble(Console.ReadLine());
-            double d = (b+Math.Sqrt(Math.Pow(b,2) + 4 * a * c)) / (2 * a) - Math.Pow(a,3) + Math.Pow(b,-2);
+            double d = (b+Math.Sqrt(b * b + 4 * a * c)) / (2 * a) - a * a * a + (1 / (b * b));
             Console.WriteLine("Ответ: " + d);
-            Console.ReadLine();
         }
 
         static double ReadDouble(string str)
         {
             if (!double.TryParse(str, out double value))
             {
-                throw new Exception($"Некорректное целое значение '{value}'.");
+                throw new Exception($"Некорректное целое значение '{str}'.");
             }
 
             return value;
