@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ArrayHelpers;
 
 namespace Array1_5
 {
@@ -10,10 +11,11 @@ namespace Array1_5
     {
         static void Main(string[] args)
         {
-            int[] array = GenerateArray(25, -300, 300);
+            int[] array = ArrayHelpers.ArrayHelpers.GenerateArray(25, -300, 300);
             PrintArray(array);
             Console.WriteLine();
             ReplaceElements(array);
+            PrintArray(array);
         }
 
         static void PrintArray(int[] array)
@@ -22,17 +24,6 @@ namespace Array1_5
             {
                 Console.Write(array[i] + " ");
             }
-        }
-
-        static int[] GenerateArray(int length, int minValue, int MaxValue)
-        {
-            int[] array = new int[length];
-            Random random = new Random();
-            for (int i = 0; i < array.Length; i++)
-            {
-                array[i] = random.Next(minValue, MaxValue);
-            }
-            return array;
         }
 
         static void ReplaceElements(int[] array)
@@ -47,8 +38,6 @@ namespace Array1_5
                 {
                     array[i] = number;
                 }
-
-                Console.Write(array[i] + " ");
             }
         }
     }

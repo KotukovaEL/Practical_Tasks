@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ListHelpers;
 
 namespace List1_20
 {
@@ -10,47 +11,28 @@ namespace List1_20
     {
         static void Main(string[] args)
         {
-            List<int> array = GenerateArray(25, -100, 100);
-            PrintArray(array);
+            List<int> list = ListHelpers.ListHelpers.GenerateArray(25, -100, 100);
+            PrintList(list);
             Console.WriteLine();
-            ReplaceElements(array);
+            ReplaceElements(list);
+            PrintList(list);
         }
 
-        static void PrintArray(List<int> array)
+        static void PrintList(List<int> list)
         {
-            foreach (int item in array)
+            foreach (int item in list)
             {
                 Console.Write(item + " ");
             }
         }
 
-        static List<int> GenerateArray(int length, int minValue, int MaxValue)
+        static void ReplaceElements(List<int> list)
         {
-            Random random = new Random();
-            List<int> array = new List<int>(length);
-
-            for (int i = 0; i < length; i++)
+            for (int i = 0; i < list.Count / 2; i++)
             {
-                array.Add(random.Next(minValue, MaxValue));
-            }
-
-            return array;
-        }
-
-        static void ReplaceElements(List<int> array)
-        {
-            List<int> newArray = new List<int>(array);
-
-            for (int i = 0; i < array.Count / 2; i++)
-            {
-                int value = array[i * 2 + 1];
-                newArray[i * 2 + 1] = array[i * 2];
-                newArray[i * 2] = value;
-            }
-
-            foreach (int item in newArray)
-            {
-                Console.Write(item + " ");
+                int value = list[i * 2 + 1];
+                list[i * 2 + 1] = list[i * 2];
+                list[i * 2] = value;
             }
         }
     }

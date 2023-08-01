@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ListHelpers;
 
 namespace List1_5
 {
@@ -10,46 +11,33 @@ namespace List1_5
     {
         static void Main(string[] args)
         {
-            List<int> array = GenerateArray(25, -300, 300);
-            PrintArray(array);
+            List<int> list = ListHelpers.ListHelpers.GenerateArray(25, -300, 300);
+            PrintList(list);
             Console.WriteLine();
-            ReplaceElements(array);
+            ReplaceElements(list);
+            PrintList(list);
         }
 
-        static void PrintArray(List<int> array)
+        static void PrintList(List<int> list)
         {
-            foreach (int item in array)
+            foreach (int item in list)
             {
                 Console.Write(item + " ");
             }
         }
 
-        static List<int> GenerateArray(int length, int minValue, int MaxValue)
-        {
-            Random random = new Random();
-            List<int> array = new List<int>(length);
-            for (int i = 0; i < length; i++)
-            {
-                array.Add(random.Next(minValue, MaxValue));
-            }
-
-            return array;
-        }
-
-        static void ReplaceElements(List<int> array)
+        static void ReplaceElements(List<int> list)
         {
             Console.WriteLine("Введите любое число: ");
             int number = int.Parse(Console.ReadLine());
 
-            for (int i = 0; i < array.Count; i++)
+            for (int i = 0; i < list.Count; i++)
             {
-                int abs = Math.Abs(array[i]);
+                int abs = Math.Abs(list[i]);
                 if (abs >= 10 && abs <= 99)
                 {
-                    array[i] = number;
+                    list[i] = number;
                 }
-
-                Console.Write(array[i] + " ");
             }
         }
     }

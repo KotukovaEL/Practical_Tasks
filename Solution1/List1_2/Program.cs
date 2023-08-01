@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ListHelpers;
 
 namespace List1_2
 {
@@ -10,46 +11,32 @@ namespace List1_2
     {
         static void Main(string[] args)
         {
-            List<int> array = GenerateArray(25, -100, 100);
-            PrintArray(array);
+            List<int> list = ListHelpers.ListHelpers.GenerateArray(25, -100, 100);
+            PrintList(list);
             Console.WriteLine();
-            ReplaceElements(array);
+            ReplaceElements(list);
+            PrintList(list);
         }
 
-        static void PrintArray(List<int> array)
+        static void PrintList(List<int> list)
         {
-            foreach (int item in array)
+            foreach (int item in list)
             {
                 Console.Write(item + " ");
             }
         }
 
-        static List<int> GenerateArray(int length, int minValue, int MaxValue)
-        {
-            Random random = new Random();
-            List<int> array = new List<int>(length);
-
-            for (int i = 0; i < length; i++)
-            {
-                array.Add(random.Next(minValue, MaxValue));
-            }
-
-            return array;
-        }
-
-        static void ReplaceElements(List<int> array)
+        static void ReplaceElements(List<int> list)
         {
             Console.WriteLine("Введите любое число: ");
             int number = int.Parse(Console.ReadLine());
 
-            for (int i = 0; i < array.Count; i++)
+            for (int i = 0; i < list.Count; i++)
             {
-                if (array[i] % 2 == 0)
+                if (list[i] % 2 == 0)
                 {
-                    array[i] = number;
+                    list[i] = number;
                 }
-
-                Console.Write(array[i] + " ");
             }
         }
     }
