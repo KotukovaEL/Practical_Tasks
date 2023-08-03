@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using CommonList;
 
 namespace List2_1
 {
@@ -10,40 +11,51 @@ namespace List2_1
     {
         static void Main(string[] args)
         {
-            List<int> array = GenerateArray(25, -300, 300);
-            PrintArray(array);
+            List<int> list = ListHelpers.GenerateArray(25, -300, 300);
+            PrintList(list);
             Console.WriteLine();
-            RemoveElements(array);
+            int oddNumbers = FindNumberOfOddNumbers(list);
+            var newList = DeleteEvenNumbers(list, oddNumbers);
+            PrintList(newList);
         }
 
-        static void PrintArray(List<int> array)
+        static void PrintList(List<int> list)
         {
-            foreach (int item in array)
+            foreach (int item in list)
             {
                 Console.Write(item + " ");
             }
         }
 
-        static List<int> GenerateArray(int length, int minValue, int MaxValue)
+        private static int FindNumberOfOddNumbers(List<int> list)
         {
-            Random random = new Random();
-            List<int> array = new List<int>(length);
-            for (int i = 0; i < length; i++)
+            int count = 0;
+
+            for (int i = 0; i < list.Count; i++)
             {
-                array.Add(random.Next(minValue, MaxValue));
+                if (list[i] % 2 != 0)
+                {
+                    count++;
+                }
             }
 
-            return array;
+            return count;
         }
 
-        static void RemoveElements(List<int> array)
-        {
-            array.RemoveAll(i => i % 2 == 0);
 
-            foreach (int item in array)
+        static List<int> DeleteEvenNumbers(List<int> list, int count)
+        {
+            //list.RemoveAll(i => i % 2 == 0);
+
+            for (int i = list.Count - 1; i >= 0; i--)
             {
-                Console.Write(item + " ");
+                if (list[i] % 2 == 0)
+                {
+                    list.RemoveAt(i);
+                }
             }
+
+            return list;
         }
     }
 }

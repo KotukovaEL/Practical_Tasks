@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
+using ArrayHelpers;
 
 namespace Array2_1
 {
@@ -10,13 +12,15 @@ namespace Array2_1
     {
         static void Main(string[] args)
         {
-            int[] array = GenerateArray(25, -300, 300);
+            int[] array = ArrayHelpers.ArrayHelpers.GenerateArray(25, -300, 300);
             PrintArray(array);
             Console.WriteLine();
-            RemoveElements(array);
+            int oddNumbers = FindNumberOfOddNumbers(array);
+            int[] newArray = SelectOddNumbers(array, oddNumbers);
+            PrintArray(newArray);
         }
 
-        static void PrintArray(int[] array)
+        private static void PrintArray(int[] array)
         {
             for (int i = 0; i < array.Length; i++)
             {
@@ -24,27 +28,37 @@ namespace Array2_1
             }
         }
 
-        static int[] GenerateArray(int length, int minValue, int MaxValue)
+        private static int FindNumberOfOddNumbers (int[] array)
         {
-            int[] array = new int[length];
-            Random random = new Random();
+            int count = 0;
 
-            for (int i = 0; i < array.Length; i++)
+            for (int i = 0; i < array.Length; ++i)
             {
-                array[i] = random.Next(minValue, MaxValue);
+                if (array[i] % 2 != 0)
+                {
+                    count++;
+                }
             }
 
-            return array;
+            return count;
         }
 
-        static void RemoveElements(int[] array)
+        private static int[] SelectOddNumbers(int[] array, int count)
         {
-            array = array.Where(x => x % 2 != 0).ToArray();
+            //array = array.Where(x => x % 2 != 0).ToArray();
+            int[] newArray = new int[count];
+            int index = 0;
 
-            for (int i = 0; i < array.Length; i++)
+            for(int i = 0; i < array.Length; i++)
             {
-                Console.Write(array[i] + " ");
+                if (array[i] % 2 != 0)
+                {
+                    newArray[index] = array[i];
+                    index++;
+                }
             }
+            
+            return newArray;
         }
     }
 }

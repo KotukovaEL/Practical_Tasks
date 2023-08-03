@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using CommonList;
+using Microsoft.Win32;
 
 namespace List2_19
 {
@@ -10,80 +12,46 @@ namespace List2_19
     {
         static void Main(string[] args)
         {
-            List<int> array = GenerateArray(10, 0, 5);
-            PrintArray(array);
+            List<int> list = ListHelpers.GenerateArray(10, 0, 5);
+            PrintList(list);
             Console.WriteLine();
-            int maxNumber = FindMax(array);
-            InsertNumber(array, maxNumber);
+            int number = WriteNumber();
+            int maxNumber = ListHelpers.FindMax(list);
+            int countMaxNumber = ListHelpers.FindCountMaxNumber(list, maxNumber);
+            var newList = InsertNewElementAfterAllMaximum(list, maxNumber, number, countMaxNumber);
+            PrintList(newList);
         }
 
-        static void PrintArray(List<int> array)
+        static void PrintList(List<int> list)
         {
-            foreach (int item in array)
+            foreach (int item in list)
             {
                 Console.Write(item + " ");
             }
         }
 
-        static List<int> GenerateArray(int length, int minValue, int MaxValue)
-        {
-            Random random = new Random();
-            List<int> array = new List<int>(length);
-            for (int i = 0; i < length; i++)
-            {
-                array.Add(random.Next(minValue, MaxValue));
-            }
-
-            return array;
-        }
-
-        static int FindMax(List<int> array)
-        {
-            int max = array[0];
-
-            for (int i = 1; i < array.Count; ++i)
-            {
-                if (array[i] > max)
-                {
-                    max = array[i];
-                }
-            }
-
-            return max;
-        }
-        static void InsertNumber(List<int> array, int max)
+        public static int WriteNumber()
         {
             Console.WriteLine("\nВведите число: ");
             int number = int.Parse(Console.ReadLine());
-            int count = 0;
+            return number;
+        }
 
-            for (int i = 0; i < array.Count; ++i)
+        static List<int> InsertNewElementAfterAllMaximum(List<int> list, int max, int number, int count)
+        {
+            List<int> newList = new List<int>(list.Count + count);
+
+            for (int i = 0; i < list.Count; i++)
             {
-                if (array[i] == max)
-                {
-                    count++;
+                newList.Add(list[i]);
+                
+                if (list[i] == max)
+                {                   
+                    newList.Add(number);
                 }
             }
 
-            int[] newArr = new int[array.Count + count];
-            int newInd = 0;
-
-            for (int i = 0; i < array.Count; i++)
-            {
-                newArr[newInd] = array[i];
-                newInd++;
-
-                if (array[i] == max)
-                {
-                    newArr[newInd] = number;
-                    newInd++;
-                }
-            }
-
-            foreach (int i in newArr)
-            {
-                Console.Write(i + " ");
-            }
+            return newList;
         }
     }
 }

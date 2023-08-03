@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using CommonList;
 
 namespace List2_2
 {
@@ -10,41 +11,35 @@ namespace List2_2
     {
         static void Main(string[] args)
         {
-            List<int> array = GenerateArray(20, -10, 10);
-            PrintArray(array);
+            List<int> list = ListHelpers.GenerateArray(20, -10, 10);
+            PrintList(list);
             Console.WriteLine();
-            RemoveElements(array);
+            int maxNumber = ListHelpers.FindMax(list);
+            var newList = RemoveMaxElements(list, maxNumber);
+            PrintList(newList);
         }
 
-        static void PrintArray(List<int> array)
+        static void PrintList(List<int> list)
         {
-            foreach (int item in array)
+            foreach (int item in list)
             {
                 Console.Write(item + " ");
             }
-        }
+        }        
 
-        static List<int> GenerateArray(int length, int minValue, int MaxValue)
+        static List<int> RemoveMaxElements(List<int> list, int max)
         {
-            Random random = new Random();
-            List<int> array = new List<int>(length);
-            for (int i = 0; i < length; i++)
+            //int maxElements = list.Max();
+            //list.RemoveAll(x => x == maxElements);
+            for (int i = 0; i < list.Count; i++)
             {
-                array.Add(random.Next(minValue, MaxValue));
+                if (list[i] == max)
+                {
+                    list.RemoveAt(i);
+                }
             }
 
-            return array;
-        }
-
-        static void RemoveElements(List<int> array)
-        {
-            int maxElements = array.Max();
-            array.RemoveAll(x => x == maxElements);
-
-            foreach (int item in array)
-            {
-                Console.Write(item + " ");
-            }
+            return list;
         }
     }
 }

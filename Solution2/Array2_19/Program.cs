@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ArrayHelpers;
 
 namespace Array2_19
 {
@@ -10,11 +11,14 @@ namespace Array2_19
     {
         static void Main(string[] args)
         {
-            int[] array = GenerateArray(25, -100, 100);
+            int[] array = ArrayHelpers.ArrayHelpers.GenerateArray(25, -100, 100);
             PrintArray(array);
             Console.WriteLine();
-            int maxNumber = FindMax(array);
-            InsertNumber(array, maxNumber);
+            int maxNumber = ArrayHelpers.ArrayHelpers.FindMax(array);
+            int numberOfMaximumNumbers = ArrayHelpers.ArrayHelpers.FindNumberOfMaximumNumbers(array, maxNumber);
+            int newNumber = WriteNumber();
+            int[] newArray = InsertNewElementAfterAllMaximum(array, maxNumber, numberOfMaximumNumbers, newNumber);
+            PrintArray(newArray);
         }
 
         static void PrintArray(int[] array)
@@ -25,67 +29,31 @@ namespace Array2_19
             }
         }
 
-        static int[] GenerateArray(int length, int minValue, int MaxValue)
-        {
-            int[] array = new int[length];
-            Random random = new Random();
-
-            for (int i = 0; i < array.Length; i++)
-            {
-                array[i] = random.Next(minValue, MaxValue);
-            }
-
-            return array;
-        }
-
-        static int FindMax(int[] array)
-        {
-            int max = array[0];
-
-            for(int i = 1; i < array.Length; ++i)
-            {
-                if (array[i] > max)
-                {
-                    max = array[i];
-                }
-            }
-
-            return max;
-        }
-
-        static void InsertNumber(int[] array, int max)
+        private static int WriteNumber()
         {
             Console.WriteLine("\nВведите число: ");
             int number = int.Parse(Console.ReadLine());
-            int count = 0;
+            return number;
+        }
 
-            for(int i = 0 ; i < array.Length ; ++i)
-            {
-                if (array[i] == max)
-                {
-                    count++;
-                }
-            }
-
-            int[] newArr = new int[array.Length + count];
-            int newInd = 0;
+        static int[] InsertNewElementAfterAllMaximum(int[] array, int max, int count, int number)
+        {
+            int[] newArray = new int[array.Length + count];
+            int newIndex = 0;
 
             for(int i = 0 ; i < array.Length ; i++)
             {
-                newArr[newInd] = array[i];
-                newInd++;
+                newArray[newIndex] = array[i];
+                newIndex++;
 
                 if (array[i] == max)
                 {
-                    newArr[newInd] = number;
-                    newInd++;
+                    newArray[newIndex] = number;
+                    newIndex++;
                 }
             }
 
-            foreach(int i in newArr)
-            {
-                Console.Write(i + " ");
-            }
+            return newArray;
         }
     }
 }

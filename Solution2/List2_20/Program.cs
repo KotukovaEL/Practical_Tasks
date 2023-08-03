@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using CommonList;
 
 namespace List2_20
 {
@@ -10,56 +11,43 @@ namespace List2_20
     {
         static void Main(string[] args)
         {
-            List<int> array = GenerateArray(10, 0, 5);
-            PrintArray(array);
+            List<int> list = ListHelpers.GenerateArray(10, 0, 5);
+            PrintList(list);
+            int number = WriteNumber();
+            int digit = WriteDigit();
             Console.WriteLine();
-            int maxNumber = FindMax(array);
-            InsertNumber(array, maxNumber);
+            int maxNumber = ListHelpers.FindMax(list);
+            var newList = InsertNewElementInFrontAllElementsThatHaveDigitInTheirRecords(list, maxNumber, number, digit);
+            PrintList(newList);
         }
 
-        static void PrintArray(List<int> array)
+        static void PrintList(List<int> list)
         {
-            foreach (int item in array)
+            foreach (int item in list)
             {
                 Console.Write(item + " ");
             }
         }
 
-        static List<int> GenerateArray(int length, int minValue, int MaxValue)
-        {
-            Random random = new Random();
-            List<int> array = new List<int>(length);
-            for (int i = 0; i < length; i++)
-            {
-                array.Add(random.Next(minValue, MaxValue));
-            }
-
-            return array;
-        }
-
-        static int FindMax(List<int> array)
-        {
-            int max = array[0];
-
-            for (int i = 1; i < array.Count; ++i)
-            {
-                if (array[i] > max)
-                {
-                    max = array[i];
-                }
-            }
-
-            return max;
-        }
-        static List<int> InsertNumber(List<int> array, int max)
+        private static int WriteNumber()
         {
             Console.WriteLine("\nВведите число: ");
             int number = int.Parse(Console.ReadLine());
-            Console.WriteLine("\nВведите цифру: ");
+            return number;
+        }
+
+        private static int WriteDigit()
+        {
+            Console.WriteLine("\nВведите число: ");
             int digit = int.Parse(Console.ReadLine());
+            return digit;
+        }
+
+        static List<int> InsertNewElementInFrontAllElementsThatHaveDigitInTheirRecords(List<int> list, int max, int number, int digit)
+        {       
             List<int> newArr = new List<int>();
             
-            foreach (int item in array)
+            foreach (int item in list)
             {
                 int ind = item.ToString().IndexOf(digit.ToString());
                 
@@ -69,12 +57,6 @@ namespace List2_20
                 }
 
                 newArr.Add(item);
-            }
-
-
-            foreach (int i in newArr)
-            {
-                Console.Write(i + " ");
             }
 
             return newArr;

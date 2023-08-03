@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ArrayHelpers;
 
 namespace Array2_5
 {
@@ -10,10 +11,13 @@ namespace Array2_5
     {
         static void Main(string[] args)
         {
-            int[] array = GenerateArray(25, -100, 100);
+            int[] array = ArrayHelpers.ArrayHelpers.GenerateArray(25, -100, 100);
             PrintArray(array);
             Console.WriteLine();
-            RemoveElements(array);
+            int k1 = PrintK1();
+            int k2 = PrintK2();
+            int[] newArray = RemoveElements(array, k1, k2);
+            PrintArray(newArray);
         }
 
         static void PrintArray(int[] array)
@@ -24,34 +28,34 @@ namespace Array2_5
             }
         }
 
-        static int[] GenerateArray(int length, int minValue, int MaxValue)
+        private static int PrintK1()
         {
-            int[] array = new int[length];
-            Random random = new Random();
+            Console.WriteLine("Чтобы удалить из массива элементы с номера k1 по номер к2, введите k1 и k2");
+            int k1 = int.Parse(Console.ReadLine());
+            return k1;
+        }
+
+        private static int PrintK2()
+        {
+            int k2 = int.Parse(Console.ReadLine());
+            return k2;
+        }
+
+        static int[] RemoveElements(int[] array, int k1, int k2)
+        {
+            int[] newArray = new int[array.Length - k1 - k2 - 1];
+            int newIndex = 0;
 
             for (int i = 0; i < array.Length; i++)
             {
-                array[i] = random.Next(minValue, MaxValue);
+                if (i < k1 || i > k2)
+                {
+                    newArray[newIndex] = array[i];
+                    newIndex++;
+                }
             }
 
-            return array;
-        }
-
-        static void RemoveElements(int[] array)
-        {
-            Console.WriteLine("Чтобы удалить из массива элементы с номера k1 по номер к2, введите k1 и k2"); 
-            int k1 = int.Parse(Console.ReadLine());
-            int k2 = int.Parse(Console.ReadLine());
-
-            for (int i = 0; i < k1; i++)
-            {
-                Console.Write(array[i] + " ");
-            }
-
-            for (int j = k2 + 1; j < array.Length; j++)
-            {
-                Console.Write(array[j] + " ");
-            }
+            return newArray;
         }
     }
 }
