@@ -14,7 +14,8 @@ namespace Array1_5
             int[] array = ArrayHelpers.ArrayHelpers.GenerateArray(25, -300, 300);
             PrintArray(array);
             Console.WriteLine();
-            ReplaceElements(array);
+            int number = WriteNumber();
+            ReplaceElements(array, number);
             PrintArray(array);
         }
 
@@ -26,11 +27,15 @@ namespace Array1_5
             }
         }
 
-        static void ReplaceElements(int[] array)
+        private static int WriteNumber()
         {
             Console.WriteLine("Введите любое число: ");
             int number = int.Parse(Console.ReadLine());
-            
+            return number;
+        }
+
+        static void ReplaceElements(int[] array, int number)
+        {            
             for (int i = 0; i < array.Length; i++)
             {
                 int abs = Math.Abs(array[i]);

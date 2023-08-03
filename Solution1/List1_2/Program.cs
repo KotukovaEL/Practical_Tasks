@@ -14,7 +14,8 @@ namespace List1_2
             List<int> list = ListHelpers.ListHelpers.GenerateArray(25, -100, 100);
             PrintList(list);
             Console.WriteLine();
-            ReplaceElements(list);
+            int number = WriteNumber();
+            ReplaceElements(list, number);
             PrintList(list);
         }
 
@@ -26,11 +27,16 @@ namespace List1_2
             }
         }
 
-        static void ReplaceElements(List<int> list)
+        private static int WriteNumber()
         {
+
             Console.WriteLine("Введите любое число: ");
             int number = int.Parse(Console.ReadLine());
+            return number;
+        }
 
+        static void ReplaceElements(List<int> list, int number)
+        {
             for (int i = 0; i < list.Count; i++)
             {
                 if (list[i] % 2 == 0)

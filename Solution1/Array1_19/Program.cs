@@ -28,9 +28,7 @@ namespace Array1_19
 
         static void RearrangElements(int[] array)
         {
-            int[] newArray = new int[array.Length];
-            array.CopyTo(newArray, 0);
-            Array.Reverse(newArray);
+            Array.Reverse(array);
         }
     }
 }
