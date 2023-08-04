@@ -14,7 +14,7 @@ namespace Array1_19
             int[] array = ArrayHelpers.ArrayHelpers.GenerateArray(25, -300, 300);
             PrintArray(array);
             Console.WriteLine();
-            RearrangElements(array);
+            Array.Reverse(array);
             PrintArray(array);
         }
 
@@ -24,12 +24,7 @@ namespace Array1_19
             {
                 Console.Write(array[i] + " ");
             }
-        }       
-
-        static void RearrangElements(int[] array)
-        {
-            Array.Reverse(array);
-        }
+        }    
     }
 }
 

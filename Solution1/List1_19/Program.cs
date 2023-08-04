@@ -14,7 +14,7 @@ namespace List1_19
             List<int> list = ListHelpers.ListHelpers.GenerateArray(25, -300, 300);
             PrintList(list);
             Console.WriteLine();
-            RearrangElements(list);
+            list.Reverse();
             PrintList(list);
         }
 
@@ -24,11 +24,6 @@ namespace List1_19
             {
                 Console.Write(item + " ");
             }
-        }
-
-        static void RearrangElements(List<int> list)
-        {
-            list.Reverse();
         }
     }
 }
