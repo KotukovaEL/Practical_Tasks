@@ -11,6 +11,7 @@ namespace List2_1
     {
         static void Main(string[] args)
         {
+            //List<int> list = new List<int>() { 2, 2, 2, 2, 2, 2};
             List<int> list = ListHelpers.GenerateArray(25, -300, 300);
             PrintList(list);
             Console.WriteLine();
@@ -29,21 +30,21 @@ namespace List2_1
 
         private static int FindNumberOfOddNumbers(List<int> list)
         {
-            int count = 0;
+            int countMax = 0;
 
             for (int i = 0; i < list.Count; i++)
             {
                 if (list[i] % 2 != 0)
                 {
-                    count++;
+                    countMax++;
                 }
             }
 
-            return count;
+            return countMax;
         }
 
 
-        static List<int> DeleteEvenNumbers(List<int> list, int count)
+        static List<int> DeleteEvenNumbers(List<int> list, int countMax)
         {
             //list.RemoveAll(i => i % 2 == 0);
 

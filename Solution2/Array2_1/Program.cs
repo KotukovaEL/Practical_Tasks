@@ -12,6 +12,7 @@ namespace Array2_1
     {
         static void Main(string[] args)
         {
+            //int[] array = { 1, 2, 2, 3, 4, 5, 6, 7, 8 };
             int[] array = ArrayHelpers.ArrayHelpers.GenerateArray(25, -300, 300);
             PrintArray(array);
             Console.WriteLine();

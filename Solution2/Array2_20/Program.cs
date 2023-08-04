@@ -15,9 +15,9 @@ namespace Array2_20
             PrintArray(array);
             int number = PrintNumber();
             int digit = PrintDigit();
-            int count = CountDigit(array, digit);
+            int countMax = CountDigit(array, digit);
             Console.WriteLine();
-            int[] newArray = InsertNewElementInFrontAllElementsThatHaveDigitInTheirRecords(array, number, digit, count);
+            int[] newArray = InsertAfterElementsWithDigit(array, number, digit, countMax);
             PrintArray(newArray);
         }
 
@@ -49,7 +49,9 @@ namespace Array2_20
 
             for (int i = 0; i < array.Length; i++)
             {
-                if (array[i].ToString().Contains(digit.ToString()))
+                var value = digit.ToString();
+                bool value1 = array[i].ToString().Contains(value);
+                if (value1)
                 {
                     count++;
                 }
@@ -57,7 +59,7 @@ namespace Array2_20
 
             return count;
         }
-        static int[] InsertNewElementInFrontAllElementsThatHaveDigitInTheirRecords(int[] array, int number, int digit, int count)
+        static int[] InsertAfterElementsWithDigit(int[] array, int number, int digit, int count)
         {
             int[] array2 = new int[array.Length + count];
             int newInd = 0;

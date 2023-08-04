@@ -28,10 +28,10 @@ namespace Array2_2
             }
         }
 
-        static int[] RemoveMaximumNumbers(int[] array, int max, int count)
+        static int[] RemoveMaximumNumbers(int[] array, int max, int countMax)
         {
             //array = array.Where(x => x != array.Max()).ToArray();
-            int[] newArray = new int[array.Length - count];
+            int[] newArray = new int[array.Length - countMax];
             int index = 0;
 
             for (int i = 0; i < array.Length; i++)

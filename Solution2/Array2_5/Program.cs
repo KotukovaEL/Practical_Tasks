@@ -14,10 +14,19 @@ namespace Array2_5
             int[] array = ArrayHelpers.ArrayHelpers.GenerateArray(25, -100, 100);
             PrintArray(array);
             Console.WriteLine();
-            int k1 = PrintK1();
-            int k2 = PrintK2();
-            int[] newArray = RemoveElements(array, k1, k2);
-            PrintArray(newArray);
+            int k1 = EnterNumber("k1");
+            int k2 = EnterNumber("k2");
+            Validate(array.Length, k1, k2);
+            RemoveElements(ref array, k1, k2);
+            PrintArray(array);
+        }
+
+        private static void Validate(int length, int k1, int k2)
+        {
+            if (k1 < 0 || k1 > k2 || k2 >= length)
+            {
+                throw new Exception("Ошибка");
+            }
         }
 
         static void PrintArray(int[] array)
@@ -28,20 +37,13 @@ namespace Array2_5
             }
         }
 
-        private static int PrintK1()
+        private static int EnterNumber(string paramName)
         {
-            Console.WriteLine("Чтобы удалить из массива элементы с номера k1 по номер к2, введите k1 и k2");
-            int k1 = int.Parse(Console.ReadLine());
-            return k1;
+            Console.WriteLine($"Введите {paramName} ");
+            return int.Parse(Console.ReadLine());            
         }
 
-        private static int PrintK2()
-        {
-            int k2 = int.Parse(Console.ReadLine());
-            return k2;
-        }
-
-        static int[] RemoveElements(int[] array, int k1, int k2)
+        static void RemoveElements(ref int[] array, int k1, int k2)
         {
             int[] newArray = new int[array.Length - k1 - k2 - 1];
             int newIndex = 0;
@@ -54,8 +56,7 @@ namespace Array2_5
                     newIndex++;
                 }
             }
-
-            return newArray;
+            array = newArray;
         }
     }
 }

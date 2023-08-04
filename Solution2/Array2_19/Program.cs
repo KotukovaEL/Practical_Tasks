@@ -16,8 +16,8 @@ namespace Array2_19
             Console.WriteLine();
             int maxNumber = ArrayHelpers.ArrayHelpers.FindMax(array);
             int numberOfMaximumNumbers = ArrayHelpers.ArrayHelpers.FindNumberOfMaximumNumbers(array, maxNumber);
-            int newNumber = WriteNumber();
-            int[] newArray = InsertNewElementAfterAllMaximum(array, maxNumber, numberOfMaximumNumbers, newNumber);
+            int newNumber = EnterNumber();
+            int[] newArray = InsertNewNumberAfterAllMaximum(array, maxNumber, numberOfMaximumNumbers, newNumber);
             PrintArray(newArray);
         }
 
@@ -29,14 +29,14 @@ namespace Array2_19
             }
         }
 
-        private static int WriteNumber()
+        private static int EnterNumber()
         {
             Console.WriteLine("\nВведите число: ");
             int number = int.Parse(Console.ReadLine());
             return number;
         }
 
-        static int[] InsertNewElementAfterAllMaximum(int[] array, int max, int count, int number)
+        static int[] InsertNewNumberAfterAllMaximum(int[] array, int max, int count, int number)
         {
             int[] newArray = new int[array.Length + count];
             int newIndex = 0;
