@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using ArrayHelpers;
+using CommonArray;
 
 namespace Array2_5
 {
@@ -11,13 +11,13 @@ namespace Array2_5
     {
         static void Main(string[] args)
         {
-            int[] array = ArrayHelpers.ArrayHelpers.GenerateArray(25, -100, 100);
+            int[] array = ArrayHelpers.GenerateArray(25, -100, 100);
             PrintArray(array);
             Console.WriteLine();
             int k1 = EnterNumber("k1");
             int k2 = EnterNumber("k2");
             Validate(array.Length, k1, k2);
-            RemoveElements(ref array, k1, k2);
+            ArrayHelpers.RemoveElementsFromK1ToK2(ref array, k1, k2);
             PrintArray(array);
         }
 
@@ -41,22 +41,6 @@ namespace Array2_5
         {
             Console.WriteLine($"Введите {paramName} ");
             return int.Parse(Console.ReadLine());            
-        }
-
-        static void RemoveElements(ref int[] array, int k1, int k2)
-        {
-            int[] newArray = new int[array.Length - k1 - k2 - 1];
-            int newIndex = 0;
-
-            for (int i = 0; i < array.Length; i++)
-            {
-                if (i < k1 || i > k2)
-                {
-                    newArray[newIndex] = array[i];
-                    newIndex++;
-                }
-            }
-            array = newArray;
         }
     }
 }

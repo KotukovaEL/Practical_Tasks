@@ -4,7 +4,7 @@ using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
-using ArrayHelpers;
+using CommonArray;
 
 namespace Array2_1
 {
@@ -12,12 +12,11 @@ namespace Array2_1
     {
         static void Main(string[] args)
         {
-            //int[] array = { 1, 2, 2, 3, 4, 5, 6, 7, 8 };
-            int[] array = ArrayHelpers.ArrayHelpers.GenerateArray(25, -300, 300);
+            int[] array = ArrayHelpers.GenerateArray(25, -300, 300);
             PrintArray(array);
             Console.WriteLine();
-            int oddNumbers = FindNumberOfOddNumbers(array);
-            int[] newArray = SelectOddNumbers(array, oddNumbers);
+            int oddNumbers = ArrayHelpers.FindNumberOfOddNumbers(array);
+            int[] newArray = ArrayHelpers.SelectOddNumbers(array, oddNumbers);
             PrintArray(newArray);
         }
 
@@ -27,39 +26,6 @@ namespace Array2_1
             {
                 Console.Write(array[i] + " ");
             }
-        }
-
-        private static int FindNumberOfOddNumbers (int[] array)
-        {
-            int count = 0;
-
-            for (int i = 0; i < array.Length; ++i)
-            {
-                if (array[i] % 2 != 0)
-                {
-                    count++;
-                }
-            }
-
-            return count;
-        }
-
-        private static int[] SelectOddNumbers(int[] array, int count)
-        {
-            //array = array.Where(x => x % 2 != 0).ToArray();
-            int[] newArray = new int[count];
-            int index = 0;
-
-            for(int i = 0; i < array.Length; i++)
-            {
-                if (array[i] % 2 != 0)
-                {
-                    newArray[index] = array[i];
-                    index++;
-                }
-            }
-            
-            return newArray;
-        }
+        }        
     }
 }

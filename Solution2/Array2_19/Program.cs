@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using ArrayHelpers;
+using CommonArray;
 
 namespace Array2_19
 {
@@ -11,13 +11,13 @@ namespace Array2_19
     {
         static void Main(string[] args)
         {
-            int[] array = ArrayHelpers.ArrayHelpers.GenerateArray(25, -100, 100);
+            int[] array = ArrayHelpers.GenerateArray(25, -100, 100);
             PrintArray(array);
             Console.WriteLine();
-            int maxNumber = ArrayHelpers.ArrayHelpers.FindMax(array);
-            int numberOfMaximumNumbers = ArrayHelpers.ArrayHelpers.FindNumberOfMaximumNumbers(array, maxNumber);
+            int maxNumber = ArrayHelpers.FindMax(array);
+            int numberOfMaximumNumbers = ArrayHelpers.FindNumberOfMaximumNumbers(array, maxNumber);
             int newNumber = EnterNumber();
-            int[] newArray = InsertNewNumberAfterAllMaximum(array, maxNumber, numberOfMaximumNumbers, newNumber);
+            int[] newArray = ArrayHelpers.InsertNewNumberAfterAllMaximum(array, maxNumber, numberOfMaximumNumbers, newNumber);
             PrintArray(newArray);
         }
 
@@ -34,26 +34,6 @@ namespace Array2_19
             Console.WriteLine("\nВведите число: ");
             int number = int.Parse(Console.ReadLine());
             return number;
-        }
-
-        static int[] InsertNewNumberAfterAllMaximum(int[] array, int max, int count, int number)
-        {
-            int[] newArray = new int[array.Length + count];
-            int newIndex = 0;
-
-            for(int i = 0 ; i < array.Length ; i++)
-            {
-                newArray[newIndex] = array[i];
-                newIndex++;
-
-                if (array[i] == max)
-                {
-                    newArray[newIndex] = number;
-                    newIndex++;
-                }
-            }
-
-            return newArray;
         }
     }
 }

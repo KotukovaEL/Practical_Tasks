@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using ArrayHelpers;
+using CommonArray;
 
 namespace Array2_20
 {
@@ -11,13 +11,13 @@ namespace Array2_20
     {
         static void Main(string[] args)
         {
-            int[] array = ArrayHelpers.ArrayHelpers.GenerateArray(25, -100, 100);
+            int[] array = ArrayHelpers.GenerateArray(25, -100, 100);
             PrintArray(array);
             int number = PrintNumber();
             int digit = PrintDigit();
-            int countMax = CountDigit(array, digit);
+            int countMax = ArrayHelpers.CountDigit(array, digit);
             Console.WriteLine();
-            int[] newArray = InsertAfterElementsWithDigit(array, number, digit, countMax);
+            int[] newArray = ArrayHelpers.InsertBeforeElementsWithDigit(array, number, digit, countMax);
             PrintArray(newArray);
         }
 
@@ -41,42 +41,6 @@ namespace Array2_20
             Console.WriteLine("\nВведите цифру: ");
             int digit = int.Parse(Console.ReadLine());
             return digit;
-        }
-
-        private static int CountDigit(int[] array, int digit)
-        {
-            int count = 0;
-
-            for (int i = 0; i < array.Length; i++)
-            {
-                var value = digit.ToString();
-                bool value1 = array[i].ToString().Contains(value);
-                if (value1)
-                {
-                    count++;
-                }
-            }
-
-            return count;
-        }
-        static int[] InsertAfterElementsWithDigit(int[] array, int number, int digit, int count)
-        {
-            int[] array2 = new int[array.Length + count];
-            int newInd = 0;
-
-            for(int i = 0 ; i < array.Length ; i++)
-            {
-                if (array[i].ToString().Contains(digit.ToString()))
-                {
-                    array2[newInd] = number;
-                    newInd++;
-                }
-
-                array2[newInd] = array[i];
-                newInd++;
-            }
-
-            return array2;
         }
     }
 }

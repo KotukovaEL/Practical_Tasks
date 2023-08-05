@@ -16,8 +16,7 @@ namespace List2_20
             int number = WriteNumber();
             int digit = WriteDigit();
             Console.WriteLine();
-            int maxNumber = ListHelpers.FindMax(list);
-            var newList = InsertNewElementInFrontAllElementsThatHaveDigitInTheirRecords(list, maxNumber, number, digit);
+            var newList = ListHelpers.InsertNewElementInFrontAllElementsThatHaveDigitInTheirRecords(list, number, digit);
             PrintList(newList);
         }
 
@@ -41,25 +40,6 @@ namespace List2_20
             Console.WriteLine("\nВведите число: ");
             int digit = int.Parse(Console.ReadLine());
             return digit;
-        }
-
-        static List<int> InsertNewElementInFrontAllElementsThatHaveDigitInTheirRecords(List<int> list, int max, int number, int digit)
-        {       
-            List<int> newArr = new List<int>();
-            
-            foreach (int item in list)
-            {
-                int ind = item.ToString().IndexOf(digit.ToString());
-                
-                if(ind != -1)
-                {
-                    newArr.Add(number);
-                }
-
-                newArr.Add(item);
-            }
-
-            return newArr;
         }
     }
 }

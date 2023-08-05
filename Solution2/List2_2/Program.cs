@@ -15,7 +15,7 @@ namespace List2_2
             PrintList(list);
             Console.WriteLine();
             int maxNumber = ListHelpers.FindMax(list);
-            var newList = RemoveMaxElements(list, maxNumber);
+            var newList = ListHelpers.RemoveMaxElements(list, maxNumber);
             PrintList(newList);
         }
 
@@ -26,20 +26,5 @@ namespace List2_2
                 Console.Write(item + " ");
             }
         }        
-
-        static List<int> RemoveMaxElements(List<int> list, int max)
-        {
-            //int maxElements = list.Max();
-            //list.RemoveAll(x => x == maxElements);
-            for (int i = 0; i < list.Count; i++)
-            {
-                if (list[i] == max)
-                {
-                    list.RemoveAt(i);
-                }
-            }
-
-            return list;
-        }
     }
 }

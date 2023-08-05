@@ -16,7 +16,7 @@ namespace List2_5
             Console.WriteLine();
             int k1 = WriteK1();
             int k2 = WriteK2();
-            var newList = RemoveElements(list, k1, k2);
+            var newList = ListHelpers.RemoveElements(list, k1, k2);
             PrintList(newList);
         }
 
@@ -40,12 +40,6 @@ namespace List2_5
             Console.WriteLine("Введите k2: ");
             int k2 = int.Parse(Console.ReadLine());
             return k2;
-        }
-
-        static List<int> RemoveElements(List<int> list, int k1, int k2)
-        {
-            list.RemoveRange(k1, k2 + 1);
-            return list;
         }
     }
 }
