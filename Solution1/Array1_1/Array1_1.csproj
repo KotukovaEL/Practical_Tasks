@@ -50,9 +50,9 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\ArrayHelpers\ArrayHelpers.csproj">
-      <Project>{dfcbc71e-64e9-4273-a40f-853cfda6444f}</Project>
-      <Name>ArrayHelpers</Name>
+    <ProjectReference Include="..\CommonArray\CommonArray.csproj">
+      <Project>{59100020-a2ed-48b9-bf4e-f6018fec5ec9}</Project>
+      <Name>CommonArray</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

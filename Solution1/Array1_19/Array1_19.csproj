@@ -6,7 +6,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\ArrayHelpers\ArrayHelpers.csproj" />
+    <ProjectReference Include="..\CommonArray\CommonArray.csproj" />
   </ItemGroup>
 
 </Project>

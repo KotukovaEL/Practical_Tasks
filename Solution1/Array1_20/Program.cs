@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using ArrayHelpers;
+using CommonArray;
 
 namespace Array1_20
 {
@@ -11,10 +11,10 @@ namespace Array1_20
     {
         static void Main(string[] args)
         {
-            int[] array = ArrayHelpers.ArrayHelpers.GenerateArray(25, -300, 300);
+            int[] array = ArrayHelpers.GenerateArray(25, -300, 300);
             PrintArray(array);
             Console.WriteLine();
-            RearrangElements(array);
+            ArrayHelpers.RearrangElements(array);
             PrintArray(array);
         }
 
@@ -23,16 +23,6 @@ namespace Array1_20
             for (int i = 0; i < array.Length; i++)
             {
                 Console.Write(array[i] + " ");
-            }
-        }
-
-        static void RearrangElements(int[] array)
-        {            
-            for (int i = 0; i < array.Length / 2; i++)
-            {
-                int value = array[i * 2 + 1];
-                array[i * 2 + 1] = array[i * 2];
-                array[i * 2] = value;
             }
         }
     }

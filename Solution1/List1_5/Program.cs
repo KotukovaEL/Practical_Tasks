@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using ListHelpers;
+using CommonList;
 
 namespace List1_5
 {
@@ -11,11 +11,11 @@ namespace List1_5
     {
         static void Main(string[] args)
         {
-            List<int> list = ListHelpers.ListHelpers.GenerateArray(25, -300, 300);
+            List<int> list = ListHelpers.GenerateArray(25, -300, 300);
             PrintList(list);
             Console.WriteLine();
             int number = WriteNumber();
-            ReplaceElements(list, number);
+            ListHelpers.ReplaceTwoDigit(list, number);
             PrintList(list);
         }
 
@@ -32,18 +32,6 @@ namespace List1_5
             Console.WriteLine("Введите любое число: ");
             int number = int.Parse(Console.ReadLine());
             return number;
-        }
-
-        static void ReplaceElements(List<int> list, int number)
-        {
-            for (int i = 0; i < list.Count; i++)
-            {
-                int abs = Math.Abs(list[i]);
-                if (abs >= 10 && abs <= 99)
-                {
-                    list[i] = number;
-                }
-            }
         }
     }
 }

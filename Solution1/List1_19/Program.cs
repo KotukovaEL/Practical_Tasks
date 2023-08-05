@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using ListHelpers;
+using CommonList;
 
 namespace List1_19
 {
@@ -11,7 +11,7 @@ namespace List1_19
     {
         static void Main(string[] args)
         {
-            List<int> list = ListHelpers.ListHelpers.GenerateArray(25, -300, 300);
+            List<int> list = ListHelpers.GenerateArray(25, -300, 300);
             PrintList(list);
             Console.WriteLine();
             list.Reverse();

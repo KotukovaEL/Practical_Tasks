@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using ArrayHelpers;
+using CommonArray;
 
 namespace Array1_2
 {
@@ -11,11 +11,11 @@ namespace Array1_2
     {
         static void Main(string[] args)
         {
-            int[] array = ArrayHelpers.ArrayHelpers.GenerateArray(25, -100, 100);
+            int[] array = ArrayHelpers.GenerateArray(25, -100, 100);
             PrintArray(array);
             Console.WriteLine();
             int number = WriteNumber();
-            ReplaceElements(array, number);
+            ArrayHelpers.ReplaceEvenElements(array, number);
             PrintArray(array);
         }
 
@@ -32,17 +32,6 @@ namespace Array1_2
             Console.WriteLine("Введите любое число: ");
             int number = int.Parse(Console.ReadLine());
             return number;
-        }
-
-        static void ReplaceElements(int[] array, int number)
-        {
-            for (int i = 0; i < array.Length; i++)
-            {
-                if (array[i] % 2 == 0)
-                {
-                    array[i] = number;
-                }
-            }
         }
     }
 }
