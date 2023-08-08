@@ -156,7 +156,7 @@ namespace CommonArray
 
         public static void RemoveElementsFromK1ToK2(ref int[] array, int k1, int k2)
         {
-            int[] newArray = new int[array.Length - k1 - k2 - 1];
+            int[] newArray = new int[array.Length - k2 + k1 - 1];
             int newIndex = 0;
 
             for (int i = 0; i < array.Length; i++)

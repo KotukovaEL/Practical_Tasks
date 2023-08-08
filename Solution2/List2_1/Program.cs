@@ -15,8 +15,7 @@ namespace List2_1
             List<int> list = ListHelpers.GenerateArray(25, -300, 300);
             PrintList(list);
             Console.WriteLine();
-            int oddNumbers = ListHelpers.FindNumberOfOddNumbers(list);
-            var newList = ListHelpers.DeleteEvenNumbers(list, oddNumbers);
+            var newList = ListHelpers.DeleteEvenNumbers(list);
             PrintList(newList);
         }
 

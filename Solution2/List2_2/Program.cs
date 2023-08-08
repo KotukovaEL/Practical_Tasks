@@ -11,7 +11,8 @@ namespace List2_2
     {
         static void Main(string[] args)
         {
-            List<int> list = ListHelpers.GenerateArray(20, -10, 10);
+            //List<int> list = ListHelpers.GenerateArray(20, -10, 10);
+            var list = new List<int> { 6, 1, 2, 6, 6, 5, 6, 6, 4, 3 };
             PrintList(list);
             Console.WriteLine();
             int maxNumber = ListHelpers.FindMax(list);

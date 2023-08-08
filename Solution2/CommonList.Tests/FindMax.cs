@@ -82,8 +82,7 @@ namespace CommonList.Tests
         {
             var expectedList = new List<int> { 1, 3, 5, 7, 9, 11 };
             var list = new List<int> { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11 };
-            var quantityEvenNumber = 6;
-            var actualList = ListHelpers.DeleteEvenNumbers(list, quantityEvenNumber);
+            var actualList = ListHelpers.DeleteEvenNumbers(list);
             actualList.Should().BeEquivalentTo(expectedList);
         }
 
@@ -92,8 +91,7 @@ namespace CommonList.Tests
         {
             var expectedList = new List<int> { 1, 3, 5, 7, 9, 11 };
             var list = new List<int> { 1, 3, 5, 7, 9, 11 };
-            var quantityEvenNumber = 0;
-            var actualList = ListHelpers.DeleteEvenNumbers(list, quantityEvenNumber);
+            var actualList = ListHelpers.DeleteEvenNumbers(list);
             actualList.Should().BeEquivalentTo(expectedList);
         }
     }

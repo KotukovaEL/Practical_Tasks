@@ -64,7 +64,7 @@ namespace CommonList
         }
 
 
-        public static List<int> DeleteEvenNumbers(List<int> list, int countMax)
+        public static List<int> DeleteEvenNumbers(List<int> list)
         {
             //list.RemoveAll(i => i % 2 == 0);
 
@@ -100,7 +100,7 @@ namespace CommonList
         {
             //int maxElements = list.Max();
             //list.RemoveAll(x => x == maxElements);
-            for (int i = 0; i < list.Count; i++)
+            for (int i = list.Count - 1; i >= 0; i--)
             {
                 if (list[i] == max)
                 {
@@ -132,7 +132,7 @@ namespace CommonList
 
         public static List<int> RemoveElements(List<int> list, int k1, int k2)
         {
-            list.RemoveRange(k1, k2 + 1);
+            list.RemoveRange(k1, k2 - k1 + 1);
             return list;
         }
     }

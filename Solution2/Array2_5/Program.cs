@@ -12,6 +12,7 @@ namespace Array2_5
         static void Main(string[] args)
         {
             int[] array = ArrayHelpers.GenerateArray(25, -100, 100);
+            //int[] array = new[] { 1, 2, 3, 4, 5, 6, 7 };
             PrintArray(array);
             Console.WriteLine();
             int k1 = EnterNumber("k1");
