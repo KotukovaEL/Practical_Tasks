@@ -16,7 +16,7 @@ namespace Task1_9_3_10
 
             if (abs < 10 || abs >= 100)
             {
-                throw new Exception($"Число не двузначное '{a}'");
+                throw new Exception($"Число '{a}' - недвузначное ");
             }
 
             int b = a % 10;
@@ -25,11 +25,11 @@ namespace Task1_9_3_10
 
             if (d % 2 == 0)
             {
-                Console.WriteLine("Сумма цифр двухзначного числа четная");
+                Console.WriteLine("Сумма цифр двузначного числа четная");
             }
             else
             {
-                Console.WriteLine("Сумма цифр двухзначного числа нечетная");
+                Console.WriteLine("Сумма цифр двузначного числа нечетная");
             }
         }
 
