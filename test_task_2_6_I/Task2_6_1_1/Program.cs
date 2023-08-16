@@ -12,10 +12,10 @@ namespace Task2_6_1_1
         static void Main(string[] args)
         {
             Console.WriteLine("Введите значение x: ");
-            double x = Class1.ReadDouble(Console.ReadLine());
+            double x = Logic.ReadDouble(Console.ReadLine());
             Console.WriteLine("Введите значение y: ");
-            double y = Class1.ReadDouble(Console.ReadLine());
-            Console.WriteLine(Class1.FindMin_2(x, y));
+            double y = Logic.ReadDouble(Console.ReadLine());
+            Console.WriteLine(Logic.FindMin_for_Task2_6_1_1(x, y));
         }       
     }
 }

@@ -14,7 +14,7 @@ namespace Methods.Tests
         {
             var expected = 0;
             var x = 1;
-            var result = Class1.ReplacesOddNumberWith0(x);
+            var result = Logic.ReplacesOddNumberWith0(x);
             Assert.Equal(expected, result);
         }
 
@@ -23,7 +23,7 @@ namespace Methods.Tests
         {
             var expected = 1;
             var x = 2;
-            var result = Class1.ReplacesOddNumberWith0(x);
+            var result = Logic.ReplacesOddNumberWith0(x);
             Assert.Equal(expected, result);
         }
     }

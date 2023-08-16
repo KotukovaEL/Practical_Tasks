@@ -9,7 +9,7 @@ namespace Task2_6_1_10
         {
             Console.WriteLine("Введите значение x: ");
             int x = int.Parse(Console.ReadLine());
-            Console.WriteLine(Class1.ReplacesOddNumberWith0(x));
+            Console.WriteLine(Logic.ReplacesOddNumberWith0(x));
         }
 
 

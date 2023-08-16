@@ -3,11 +3,11 @@ using System.Collections.Generic;
 
 namespace Methods
 {
-    public class Class1
+    public class Logic
     {
-        public static double FindMin_1(double x, double y, double z, double v)
+        public static double FindMin_for_Task_2_6_1_2(double x, double y, double z, double v)
         {
-            return (Math.Min(Math.Min(x, y), Math.Min(z, v)));
+            return Math.Min(Math.Min(x, y), Math.Min(z, v));
         }
 
         public static double ReadDouble(string str)
@@ -20,7 +20,7 @@ namespace Methods
             return value;
         }
 
-        public static double FindMin_2(double x, double y)
+        public static double FindMin_for_Task2_6_1_1(double x, double y)
         {
             return (Math.Min(3 * x, 2 * y) + Math.Min(x - y, x + y));
         }
@@ -29,14 +29,13 @@ namespace Methods
         {
             if (x % 2 == 0)
             {
-                x = x / 2;
-                return x;
+                x = x / 2;           
             }
             else
             {
                 x = 0;
-                return x;
             }
+            return x;
         }
 
         public static (double x, double y) ReadPoint()
@@ -49,14 +48,14 @@ namespace Methods
             return (x, y);
         }
 
-        private static double GetDistance_1((double x, double y) point1, (double x, double y) point2)
+        private static double GetDistance((double x, double y) point1, (double x, double y) point2)
         {
             return Math.Sqrt((point2.x - point1.x) * (point2.x - point1.x) + (point2.y - point1.y) * (point2.y - point1.y));
         }
 
-        public static string EnsureTriangle_1(double a, double b, double c)
+        public static string EnsureTriangle(double a, double b, double c)
         {
-            if ((a + b > c) && (a + c > b) && (b + c > a))
+            if (ISTriangle(a, b, c))
             {
                 return "Треугольник существует";
             }
@@ -86,10 +85,10 @@ namespace Methods
                             continue;
                         }
 
-                        double a = GetDistance_1(points[i], points[j]);
-                        double b = GetDistance_1(points[j], points[k]);
-                        double c = GetDistance_1(points[k], points[i]);
-                        if (EnsureTriangle_2(a, b, c))
+                        double a = GetDistance(points[i], points[j]);
+                        double b = GetDistance(points[j], points[k]);
+                        double c = GetDistance(points[k], points[i]);
+                        if (ISTriangle(a, b, c))
                         {
                             ++count;
                         }
@@ -99,12 +98,12 @@ namespace Methods
             return count;
         }
 
-        public static bool EnsureTriangle_2(double a, double b, double c)
+        public static bool ISTriangle(double a, double b, double c)
         {
             return (a + b > c) && (a + c > b) && (b + c > a);
         }
 
-        public static double GetDistance_2(double x1, double y1, double x2, double y2)
+        public static double GetDistance(double x1, double y1, double x2, double y2)
         {
             return Math.Sqrt((x2 - x1) * (x2 - x1) + (y2 - y1) * (y2 - y1));
         }

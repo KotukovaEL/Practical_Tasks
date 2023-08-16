@@ -13,7 +13,7 @@ namespace Methods.Tests
         public void Should_throw_Exception_for_incorrect_read_double()
         {
             var stringValue = "mnlkk";
-            Assert.Throws<Exception>(() => Class1.ReadDouble(stringValue));
+            Assert.Throws<Exception>(() => Logic.ReadDouble(stringValue));
         }
     }
 }

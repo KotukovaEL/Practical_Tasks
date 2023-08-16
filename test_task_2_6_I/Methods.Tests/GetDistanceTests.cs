@@ -7,16 +7,17 @@ using Xunit;
 
 namespace Methods.Tests
 {
-    public class EnsureTriangle_2Tests
+    public class GetDistanceTests
     {
         [Fact]
-        public void Should_ensure_triangle_2_correctly()
+        public void Should_get_distance_correctly()
         {
-            var expected = false;
+            var expected = 2.8284271247461903;
             var a = 1;
             var b = 2;
             var c = 3;
-            var result = Class1.EnsureTriangle_2(a, b, c);
+            var d = 4;
+            var result = Logic.GetDistance(a, b, c, d);
             Assert.Equal(expected, result);
         }
     }

@@ -11,19 +11,19 @@ namespace Task2_6_1_20
             List<(double x, double y)> points = new List<(double x, double y)>();
 
             Console.WriteLine("Введите координаты точки 1.");
-            points.Add(Class1.ReadPoint());
+            points.Add(Logic.ReadPoint());
 
             Console.WriteLine("Введите координаты точки 2.");
-            points.Add(Class1.ReadPoint());
+            points.Add(Logic.ReadPoint());
 
             Console.WriteLine("Введите координаты точки 3.");
-            points.Add(Class1.ReadPoint());
+            points.Add(Logic.ReadPoint());
 
             Console.WriteLine("Введите координаты точки 4.");
-            points.Add(Class1.ReadPoint());
+            points.Add(Logic.ReadPoint());
 
 
-            Console.WriteLine(Class1.FindNumberOfTriangles(points));
+            Console.WriteLine(Logic.FindNumberOfTriangles(points));
         }
     }
 }
