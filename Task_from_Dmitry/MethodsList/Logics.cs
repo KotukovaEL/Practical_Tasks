@@ -27,17 +27,38 @@ namespace MethodsList
 
         public static List<int> MergeList(List<int> list1, List<int> list2)
         {
-            var list3 = new List<int> (list1.Count + list2.Count);
-            for (int i = 0; i < list1.Count; i++)
+            var list3 = new List<int>(list1.Count + list2.Count);
+            int ind1 = 0;
+            int ind2 = 0;
+            for (int i = 0; i < list3.Count; i++)
             {
-                list3.Add(list1[i]);
+                if (ind1 < list1.Count && ind2 < list2.Count)
+                {
+                    if (list1[ind1] < list2[ind2])
+                    {
+                        list3[i] = list1[ind1];
+                        list3[i + 1] = list2[ind2];
+                        ind1++;
+                    }
+                    else
+                    {
+                        list3[i] = list2[ind2];
+                        list3[i + 1] = list1[ind1];
+                        ind2++;
+                    }
+                }
+                else if (ind1 < list1.Count)
+                {
+                    list3[i] = list1[ind1];
+                    ind1++;
+                }
+                else
+                {
+                    list3[i] = list2[ind2];
+                    ind2++;
+                }
             }
 
-            for (int j = list1.Count; j < list3.Capacity; j++)
-            {
-                list3.Add(list2[j - list1.Count]);
-            }
-            SortList(list3);
             return list3;
         }
 

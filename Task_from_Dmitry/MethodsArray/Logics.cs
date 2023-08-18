@@ -28,16 +28,38 @@ namespace MethodsArray
         public static int[] MergeArray(int[] array1, int[] array2)
         {
             var array3 = new int[array1.Length + array2.Length];
-            for (int i = 0; i < array1.Length; i++)
+            int ind1 = 0;
+            int ind2 = 0;
+            for (int i = 0; i < array3.Length; i++)
             {
-                array3[i] = array1[i];
+                if(ind1 < array1.Length && ind2 < array2.Length)
+                {
+                    if (array1[ind1] < array2[ind2])
+                    {
+                        array3[i] = array1[ind1];
+                        array3[i + 1] = array2[ind2];
+                        ind1++;
+                    }
+                    else
+                    {
+                        array3[i] = array2[ind2];
+                        array3[i + 1] = array1[ind1];
+                        ind2++;
+                    }
+                }
+                else if (ind1 < array1.Length)
+                {
+                    array3[i] = array1[ind1];
+                    ind1++;
+                }
+                else
+                {
+                    //Array.Copy(array2, ind2, array3, array2.Length - ind2, array2.Length);
+                    array3[i] = array2[ind2];
+                    ind2++;
+                }
             }
 
-            for (int j = array1.Length; j < array3.Length; j++)
-            {
-                array3[j] = array2[j - array1.Length];
-            }
-            SortArray(array3);
             return array3;
         }
 
