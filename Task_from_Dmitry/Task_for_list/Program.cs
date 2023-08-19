@@ -15,7 +15,7 @@ namespace Task_for_list
             Logics.PrintList(list1);
             Console.WriteLine();
             Logics.PrintList(list2);
-            var resultArray = Logics.MergeList(list1, list2);
+            var resultArray = Logics.MergeListWithWhile(list1, list2);
             Console.WriteLine();
             Logics.PrintList(resultArray);
         }

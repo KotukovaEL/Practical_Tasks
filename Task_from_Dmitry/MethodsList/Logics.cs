@@ -30,33 +30,68 @@ namespace MethodsList
             var list3 = new List<int>(list1.Count + list2.Count);
             int ind1 = 0;
             int ind2 = 0;
-            for (int i = 0; i < list3.Count; i++)
+            for (int i = 0; i < list3.Capacity; i++)
             {
                 if (ind1 < list1.Count && ind2 < list2.Count)
                 {
                     if (list1[ind1] < list2[ind2])
                     {
-                        list3[i] = list1[ind1];
-                        list3[i + 1] = list2[ind2];
+                        list3.Add(list1[ind1]);
                         ind1++;
                     }
                     else
                     {
-                        list3[i] = list2[ind2];
-                        list3[i + 1] = list1[ind1];
+                        list3.Add(list2[ind2]);
                         ind2++;
                     }
                 }
                 else if (ind1 < list1.Count)
                 {
-                    list3[i] = list1[ind1];
+                    list3.Add(list1[ind1]);
                     ind1++;
                 }
                 else
                 {
-                    list3[i] = list2[ind2];
+                    list3.Add(list2[ind2]);
                     ind2++;
                 }
+            }
+
+            return list3;
+        }
+
+        public static List<int> MergeListWithWhile(List<int> list1, List<int> list2)
+        {
+            var list3 = new List<int>(list1.Count + list2.Count);
+            int ind1 = 0;
+            int ind2 = 0;
+
+            while (ind1 < list1.Count && ind2 < list2.Count)
+            {
+                if (list1[ind1] < list2[ind2])
+                {
+                    list3.Add(list1[ind1]);
+                    //list3[i + 1] = list2[ind2];
+                    ind1++;
+                }
+                else
+                {
+                    list3.Add(list2[ind2]);
+                    //list3[i + 1] = list1[ind1];
+                    ind2++;
+                }
+            }
+
+            while (ind1 < list1.Count)
+            {
+                list3.Add(list1[ind1]);
+                ind1++;
+            }
+
+            while (ind2 < list2.Count)
+            {
+                list3.Add(list2[ind2]);
+                ind2++;
             }
 
             return list3;

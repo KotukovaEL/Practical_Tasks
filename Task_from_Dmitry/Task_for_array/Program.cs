@@ -14,7 +14,7 @@ namespace Task_for_array
             Logics.PrintArray(array1);
             Console.WriteLine();
             Logics.PrintArray(array2);
-            var resultArray = Logics.MergeArray(array1, array2);
+            var resultArray = Logics.MergeArrayWithWhile(array1, array2);
             Console.WriteLine();
             Logics.PrintArray(resultArray);
         }

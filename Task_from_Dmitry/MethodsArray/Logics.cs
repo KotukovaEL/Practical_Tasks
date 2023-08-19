@@ -63,6 +63,50 @@ namespace MethodsArray
             return array3;
         }
 
+        public static int[] MergeArrayWithWhile(int[] array1, int[] array2)
+        {
+            var array3 = new int[array1.Length + array2.Length];
+            int ind1 = 0;
+            int ind2 = 0;
+            int ind3 = 0;
+
+            while (ind1 < array1.Length && ind2 < array2.Length)
+            {
+                if (array1[ind1] < array2[ind2])
+                {
+                    array3[ind3] = array1[ind1];
+                    array3[ind3 + 1] = array2[ind2];
+                    ind1++;
+                    ind3++;
+                }
+                else
+                {
+                    array3[ind3] = array2[ind2];
+                    array3[ind3 + 1] = array1[ind1];
+                    ind2++;
+                    ind3++;
+                }
+            }
+
+            while (ind1 < array1.Length)
+            {
+                array3[ind3] = array1[ind1];
+                ind1++;
+                ind3++;
+            }
+
+            while (ind2 < array2.Length)
+            {
+                array3[ind3] = array2[ind2];
+                ind2++;
+                ind3++;
+            }
+
+
+
+            return array3;
+        }
+
         public static int[] SortArray(int[] array)
         {
             var index = 0;
